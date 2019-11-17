@@ -1,0 +1,21 @@
+<html>
+
+<body>
+    <p>
+        <b>Hi, Welcome to Seamlessly MTA.</b><br><br>
+        Tell me how much time it takes you to the station,<br>and how long you wish to arrive the platform before the
+        train comes.
+    </p>
+    <form action="/check" method="post" enctype="application/x-www-form-urlencoded">
+        <b>CurrentLocation</b> <br>
+        <input type="text" name="currentLocation" value="45th" /><br><br>
+        <b>TimeToStation:</b> <br>
+        <input type="number" name="timeToStation" value="2" /><br><br>
+        <b>AdvanceTime:</b> <br>
+        <input type="number" name="advanceTime" value="1" /><br><br>
+        <input type="submit" value="calculate">
+        <input type="reset">
+    </form>
+</body>
+
+</html>

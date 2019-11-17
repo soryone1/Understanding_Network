@@ -1,0 +1,6 @@
+{
+    "board": "arduino:samd:mkrwifi1010",
+    "port": "/dev/cu.usbmodem14101",
+    "programmer": "USBtinyISP",
+    "sketch": "sketch_nov14a.ino"
+}
