@@ -39,8 +39,8 @@ WiFiServer server(80);
 WiFiClient client = server.available();
 
 /* globle variables here */
-int timeToStation = 5;
-int advanceTime = 5;
+int timeToStation = 0;
+int advanceTime = 0;
 int trainTable[10];
 int nextComingTrain;
 int timeToGo;
@@ -107,7 +107,7 @@ void loop() {
 
             if (lastToken == "nexttrain") {                            // if the client is asking for the next arrival time only through GET
               calculation();
-              client.print("The next train you can catch is coming in ");    // ideally, send a request to mtaapi to get the data and parse it.
+              client.print("The next train you can catch up is coming in ");    // ideally, send a request to mtaapi to get the data and parse it.
               client.print(nextComingTrain);
               client.println(" mins.");
               client.println();
@@ -266,7 +266,7 @@ void responsMainPage() {
   client.println("<!DOCTYPE HTML>");
   client.println("<html><head></head><body>");
   client.println();
-  client.println("<p> Hello client.</p><br>");
+  client.println("<p> Hello client!</p>");
   client.println("<p> Tell me how much time it takes you to the station </p>");
   client.println("<p> and how long you wish to arrive at the platform before the train comes. </p><br>");
   client.print("<form action='/showresult/' method=post>");   // action is the url followed by the main ip.
@@ -275,7 +275,7 @@ void responsMainPage() {
   client.print("<b> AdvanceTime </b><br>");
   client.print("<input type='number' name=advanceTime value='1'><br>");
   client.print("<b> CurrentLocation </b><br>");
-  client.print("<input type='text' name=currentLocation value='45th'><br>");
+  client.print("<input type='text' name=currentLocation value='413, 45th, Brooklyn'><br><br>");
   client.print("<input type=submit value=set></form>");
   client.println("</body>");
   client.println("</html>");
