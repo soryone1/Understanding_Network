@@ -276,7 +276,7 @@ void responsMainPage() {
   client.print("<input type='number' name=advanceTime value='1'><br>");
   client.print("<b> CurrentLocation </b><br>");
   client.print("<input type='text' name=currentLocation value='45th'><br>");
-  client.print("<input type=submit value=calculate></form>");
+  client.print("<input type=submit value=set></form>");
   client.println("</body>");
   client.println("</html>");
   client.stop();
