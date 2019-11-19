@@ -19,7 +19,7 @@
   5.  http://IPaddress/showresult/                 // POST- after client hit the "calculate" button, it will show the result to the user.
 
   Last modified time : 19/11/2019
-  by Jasper Wang.
+  by Jasper & Ashley
 
 */
 
