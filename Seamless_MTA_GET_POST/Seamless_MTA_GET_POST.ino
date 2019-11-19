@@ -18,7 +18,7 @@
   4.  http://IPaddress/home/                       // GET- go the home page to see the full description and submit the form to do the setup.
   5.  http://IPaddress/showresult/                 // POST- after client hit the "calculate" button, it will show the result to the user.
 
-  Last modified time : 17/11/2019
+  Last modified time : 19/11/2019
   by Jasper Wang.
 
 */
@@ -268,7 +268,7 @@ void responsMainPage() {
   client.println();
   client.println("<p> Hello client.</p><br>");
   client.println("<p> Tell me how much time it takes you to the station </p>");
-  client.println("<p> and how long you wish to arrive the platform before the train comes. </p><br>");
+  client.println("<p> and how long you wish to arrive at the platform before the train comes. </p><br>");
   client.print("<form action='/showresult/' method=post>");   // action is the url followed by the main ip.
   client.print("<b> TimeToStation </b><br>");
   client.print("<input type='number' name=timeToStation value='3'><br>");
