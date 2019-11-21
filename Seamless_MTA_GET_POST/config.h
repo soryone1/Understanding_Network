@@ -2,3 +2,5 @@
 //#define SECRET_PASS "Sorry1029"
 #define SECRET_SSID "DG1670A72"
 #define SECRET_PASS "DG1670AD3E272"
+//#define SECRET_SSID "sandbox370"
+//#define SECRET_PASS "ts0ats03!2gether?"

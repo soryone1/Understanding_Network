@@ -47,7 +47,7 @@ int timeToGo;
 
 int buttonStatus;
 int ledStatus;
-unsigned long Counter;
+unsigned long lastCheckTime;
 
 void setup() {
 
@@ -87,6 +87,18 @@ void loop() {
   /* here is a way to prove that the globle variables are changed through client's request. */
   // Serial.println(timeToStation);
   // Serial.println(advanceTime);
+  // Serial.println(timeToGo);
+
+  if ( timeToGo != 0 ) {
+
+    if (millis() - lastCheckTime >= 1000 * 6 ) {
+      timeToGo --;
+      lastCheckTime = millis();
+      //Serial.println(timeToGo);
+    }
+  } else {
+    //Serial.println("Go Go Go");
+  }
 
   if (client.available()) {
     Serial.println("new client");
@@ -263,21 +275,20 @@ void responsMainPage() {
   client.println("Content-Type: text/html");
   client.println("Connection: close");
   client.println();
+
   client.println("<!DOCTYPE HTML>");
-  client.println("<html><head></head><body>");
-  client.println();
-  client.println("<p> Hello client!</p>");
-  client.println("<p> Tell me how much time it takes you to the station </p>");
-  client.println("<p> and how long you wish to arrive at the platform before the train comes. </p><br>");
-  client.print("<form action='/showresult/' method=post>");   // action is the url followed by the main ip.
-  client.print("<b> TimeToStation </b><br>");
-  client.print("<input type='number' name=timeToStation value='3'><br>");
-  client.print("<b> AdvanceTime </b><br>");
-  client.print("<input type='number' name=advanceTime value='1'><br>");
-  client.print("<b> CurrentLocation </b><br>");
-  client.print("<input type='text' name=currentLocation value='413, 45th, Brooklyn'><br><br>");
-  client.print("<input type=submit value=set></form>");
-  client.println("</body>");
-  client.println("</html>");
+  client.println("<html><head><title>");
+  client.println("Home");
+  client.println("</title></head><body style='background-color:#F8F8F5'><h1 style=' background: rgb(114, 51, 197); color:#f5f5f5; font-family:verdana; text-align:center; padding: 30px'>");
+  client.println("Welcome to Seamless MTA");
+
+  client.print("</h1> <div style='border-radius: 5px; background-color: #f2f2f2; padding: 20px; text-align: center;'> <form action='/showresult/' method=post enctype='application/x-www-form-urlencoded'>");   // action is the url followed by the main ip.
+  client.print(" <label>Time To Station</label>");
+  client.print("<input style='width: 100%; padding: 12px 20px; margin: 8px 0; box-sizing: border-box; border: 1px solid rgb(114, 51, 197); border-radius: 4px;' type='number' name='timeToStation' size='3' placeholder='The time you walk to the station..'><br><br>");
+  client.print("<label>Advance Time</label>");
+  client.print("<input style='width: 100%; padding: 12px 20px; margin: 8px 0; box-sizing: border-box; border: 1px solid rgb(114, 51, 197); border-radius: 4px;' type='number' name='advanceTime' size='3'  placeholder='How much time you want to have before the train arrives..'><br><br>");
+  client.print("<label>Current Location</label>");
+  client.print("<input style='width: 100%; padding: 12px 20px; margin: 8px 0; box-sizing: border-box; border: 1px solid rgb(114, 51, 197); border-radius: 4px;' type='text' name='currentLocation' placeholder='The station you go..'><br><br>");
+  client.print("<input style='width: 100%; background-color: rgb(63, 177, 67); font-size: 10pt; color: white; padding: 15px 20px;margin: 8px 0; border: none; border-radius: 4px;cursor: pointer;' type=submit value=Submit></form></div></body></html>");
   client.stop();
 }
