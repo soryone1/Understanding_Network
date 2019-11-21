@@ -1,21 +1,82 @@
+<!DOCTYPE html>
 <html>
+  <head>
+    <title>Home Page</title>
+  </head>
 
-<body>
-    <p>
-        <b>Hi, Welcome to Seamlessly MTA.</b><br><br>
-        Tell me how much time it takes you to the station,<br>and how long you wish to arrive the platform before the
-        train comes.
-    </p>
-    <form action="/check" method="post" enctype="application/x-www-form-urlencoded">
-        <b>CurrentLocation</b> <br>
-        <input type="text" name="currentLocation" value="45th" /><br><br>
-        <b>TimeToStation:</b> <br>
-        <input type="number" name="timeToStation" value="2" /><br><br>
-        <b>AdvanceTime:</b> <br>
-        <input type="number" name="advanceTime" value="1" /><br><br>
-        <input type="submit" value="calculate">
-        <input type="reset">
-    </form>
-</body>
+  <body style="background-color:#F8F8F5">
+    <h1
+      style="background: rgb(114, 51, 197); color: #f5f5f5; font-family:verdana; text-align:center; padding: 30px"
+    >
+      Welcome to Seamless MTA.
+    </h1>
 
+    <!-- <p
+      style="color:#555; font-size:90%; font-family:verdana; text-align:center; padding: 40px"
+    >
+      Tell me how much time it takes you to the station,and how long you wish to
+      arrive the platform before the train comes.
+    </p> -->
+    <div
+      style="border-radius: 5px; background-color: #f2f2f2; padding: 20px; text-align: center;"
+    >
+      <form
+        action="/check"
+        method="post"
+        enctype="application/x-www-form-urlencoded"
+      >
+        <label>Time To Station</label>
+        <input
+          style="width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid rgb(114, 51, 197);
+            border-radius: 4px;"
+          type="number"
+          name="timeToStation"
+          size="3"
+          placeholder="The time you walk to the station.."
+        /><br /><br />
+        <label>Advance Time</label>
+        <input
+          style="width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid rgb(114, 51, 197);
+            border-radius: 4px;"
+          type="number"
+          name="advanceTime"
+          size="3"
+          placeholder="How much time you want to have before the train arrives.."
+        /><br /><br />
+        <label>Current Location</label>
+        <input
+          style="width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid rgb(114, 51, 197);
+            border-radius: 4px;"
+          type="text"
+          name="currentLocation"
+          placeholder="The station you go.."
+        /><br /<br /><br />
+        <input
+          style="width: 100%;
+        background-color: rgb(63, 177, 67);
+        font-size: 10pt;
+        color: white;
+        padding: 15px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;"
+          type="submit"
+          value="Submit"
+        />
+      </form>
+    </div>
+  </body>
 </html>
