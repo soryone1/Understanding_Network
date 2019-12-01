@@ -78,6 +78,46 @@ void setup() {
 }
 
 void loop() {
+
+  requestTrainTime ();
+  /* wifi trc here. */
+  Serial.println();
+  caculateRTC();
+
+  
+
+  Serial.println("Wait 10 seconds");
+  Serial.println();
+  delay(10000);
+}
+
+void printWifiStatus() {
+  /* print the SSID of the network you're attached to: */
+  Serial.print("SSID: ");
+  Serial.println(WiFi.SSID());
+
+  /* print your board's IP address: */
+  IPAddress ip = WiFi.localIP();
+  Serial.print("Main IP Address: ");
+  Serial.println(ip);
+
+  /* print the received signal strength: */
+  long rssi = WiFi.RSSI();
+  Serial.print("signal strength (RSSI):");
+  Serial.print(rssi);
+  Serial.println(" dBm");
+}
+
+void caculateRTC()
+{
+  int rtcMinutes = rtc.getMinutes();
+  int rtcSecond = rtc.getSeconds();
+  rtcSum = rtcMinutes * 60 + rtcSecond;
+  Serial.print("rtc = ");
+  Serial.println(rtcSum);
+}
+
+void requestTrainTime () {
   /* send the get request */
   client.get(route);
   /* read the body of the response */
@@ -118,46 +158,12 @@ void loop() {
     Serial.println(ComingTimeSecinds[i]);
   }
 
-  /* wifi trc here. */
-  Serial.println();
-  caculateRTC();
-  
   int j = 0;
-  while(ComingTimeSecinds[j] <= rtcSum){
+  while (ComingTimeSecinds[j] <= rtcSum) {
     j++;
   }
 
   nextComingTrain = ComingTimeSecinds[j];
   Serial.print("next train: ");
   Serial.println(nextComingTrain);
-  
-  Serial.println("Wait 10 seconds");
-  Serial.println();
-  delay(10000);
-}
-
-void printWifiStatus() {
-  /* print the SSID of the network you're attached to: */
-  Serial.print("SSID: ");
-  Serial.println(WiFi.SSID());
-
-  /* print your board's IP address: */
-  IPAddress ip = WiFi.localIP();
-  Serial.print("Main IP Address: ");
-  Serial.println(ip);
-
-  /* print the received signal strength: */
-  long rssi = WiFi.RSSI();
-  Serial.print("signal strength (RSSI):");
-  Serial.print(rssi);
-  Serial.println(" dBm");
-}
-
-void caculateRTC()
-{
-  int rtcMinutes = rtc.getMinutes();
-  int rtcSecond = rtc.getSeconds();
-  rtcSum = rtcMinutes * 60 + rtcSecond;
-  Serial.print("rtc = ");
-  Serial.println(rtcSum);
 }
