@@ -4,6 +4,8 @@
 
   A stand alone IOT device to tell you when is the best time to leave home to catch the next coming subway.
 
+  mta real time data server : http://167.71.173.220:5000/by-location?lat=40.648939&lon=-74.010006
+
   Circuit:
 
   - 3 buttons
